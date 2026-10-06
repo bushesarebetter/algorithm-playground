@@ -1,0 +1,10 @@
+dist/
+node_modules/
+__pycache__/
+*.py[cod]
+.DS_Store
+.impeccable/mocks/
+.impeccable/cache/
+.impeccable/tmp/
+reports/
+*.log
