@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore maze searches, steer a flock, or play Connect Four against two real AI algorithms. Everything runs in your browser.">
+  <meta name="theme-color" content="#f8f8f6">
+  <title>Playground — bushesarebetter</title>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="./playground.css">
+  <script type="module" src="./playground.mjs"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to playground</a>
+  <header class="site-header shell">
+    <a class="brand" href="../">bushesarebetter</a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="../">Projects</a>
+      <a href="./" aria-current="page">Playground</a>
+      <a href="../#notes">Notes</a>
+      <a href="https://github.com/bushesarebetter" target="_blank" rel="noreferrer">GitHub</a>
+    </nav>
+  </header>
+  <main id="main" class="shell playground-main">
+    <section class="playground-hero" aria-labelledby="hero-title">
+      <h1 id="hero-title">Make it move.</h1>
+      <p>Change a rule. Follow a search. Make your next move.<br>Three algorithms you can get your hands on.</p>
+    </section>
+    <noscript><p class="notice">These interactive experiments need JavaScript. Their Python implementations remain available on GitHub through the source links below.</p></noscript>
+    <div class="experiment-tabs" role="tablist" aria-label="Choose an experiment">
+      <button id="tab-maze" role="tab" aria-selected="true" aria-controls="panel-maze" tabindex="0" data-tab="maze">Maze</button>
+      <button id="tab-boids" role="tab" aria-selected="false" aria-controls="panel-boids" tabindex="-1" data-tab="boids">Boids</button>
+      <button id="tab-connect-four" role="tab" aria-selected="false" aria-controls="panel-connect-four" tabindex="-1" data-tab="connect-four">Connect Four</button>
+    </div>
+
+    <section id="panel-maze" class="experiment-panel" role="tabpanel" aria-labelledby="tab-maze" tabindex="0">
+      <div class="experiment-intro">
+        <div><h2>One maze. Three searches.</h2><p>Give each algorithm the same start, finish and passages. Watch the cells it explores before it finds a route.</p></div>
+        <a class="source-link" href="https://github.com/bushesarebetter/maze-solver" target="_blank" rel="noreferrer">Python source</a>
+      </div>
+      <form id="maze-controls" class="maze-controls control-strip">
+        <label>Generator<select id="maze-generator"><option value="dfs">Depth-first search</option><option value="kruskal">Kruskal</option></select></label>
+        <label>Grid size<select id="maze-size"><option value="16">16 × 16</option><option value="24" selected>24 × 24</option><option value="36">36 × 36</option><option value="50">50 × 50</option></select></label>
+        <label>Seed<input id="maze-seed" value="7" maxlength="40" autocomplete="off"></label>
+        <label class="range-field">Extra passages <output id="maze-loops-value" for="maze-loops">0%</output><input id="maze-loops" type="range" min="0" max="40" step="5" value="0"></label>
+        <button class="button" type="submit">Generate maze</button>
+      </form>
+      <div class="playback-controls">
+        <div class="button-group"><button id="maze-play" class="button" type="button">Compare searches</button><button id="maze-reset" class="button secondary" type="button">Reset playback</button></div>
+        <label class="speed-field" for="maze-speed">Playback speed<input id="maze-speed" type="range" min="50" max="1500" step="50" value="350"><output id="maze-speed-value" for="maze-speed">350 cells/s</output></label>
+      </div>
+      <div class="maze-comparison">
+        <figure><canvas id="maze-bfs" width="400" height="400" role="img" aria-label="Breadth-first search maze playback"></canvas><figcaption><h3>Breadth-first</h3><p id="maze-bfs-stats">Ready</p></figcaption></figure>
+        <figure><canvas id="maze-dijkstra" width="400" height="400" role="img" aria-label="Dijkstra search maze playback"></canvas><figcaption><h3>Dijkstra</h3><p id="maze-dijkstra-stats">Ready</p></figcaption></figure>
+        <figure><canvas id="maze-astar" width="400" height="400" role="img" aria-label="A-star search maze playback"></canvas><figcaption><h3>A*</h3><p id="maze-astar-stats">Ready</p></figcaption></figure>
+      </div>
+      <div class="experiment-footnote"><p><span class="legend-swatch explored"></span>Explored <span class="legend-swatch route"></span>Shortest route</p><p>Every passage costs one step, so Dijkstra and BFS often explore similar numbers of cells. Add extra passages to create alternative routes. The animation replays actual search order; its speed is not a runtime benchmark.</p></div>
+      <p id="maze-status" class="experiment-status" role="status" aria-live="polite">Generating a maze…</p>
+    </section>
+
+    <section id="panel-boids" class="experiment-panel" role="tabpanel" aria-labelledby="tab-boids" tabindex="0" hidden>
+      <div class="experiment-intro">
+        <div><h2>A flock, from three rules.</h2><p>Keep a little distance. Match your neighbors. Stay together. Adjust the balance and see what follows.</p></div>
+        <a class="source-link" href="https://github.com/bushesarebetter/boids" target="_blank" rel="noreferrer">Python source</a>
+      </div>
+      <div class="simulation-layout">
+        <div class="simulation-visual"><div class="canvas-stage"><canvas id="boids-canvas" width="760" height="760" role="img" aria-label="Blue boids flock on a wrapping world. An orange predator pursues the nearest boid when enabled."></canvas><div class="canvas-reading"><span>Order <strong id="boids-order">0.00</strong></span><span id="boids-time">0.00 s simulated</span></div></div><div class="playback-controls"><div class="button-group"><button id="boids-play" class="button" type="button">Play flock</button><button id="boids-step" class="button secondary" type="button">Single step</button><button id="boids-reset" class="button secondary" type="button">Reset</button></div></div></div>
+        <div class="simulation-settings">
+          <h3>Find the balance.</h3>
+          <label class="range-field">Separation <output id="boids-separation-value" for="boids-separation">0.080</output><input id="boids-separation" type="range" min="0" max="0.3" step="0.005" value="0.08"><span>Leave room between close neighbors.</span></label>
+          <label class="range-field">Alignment <output id="boids-alignment-value" for="boids-alignment">0.050</output><input id="boids-alignment" type="range" min="0" max="0.2" step="0.005" value="0.05"><span>Turn toward the average heading.</span></label>
+          <label class="range-field">Cohesion <output id="boids-cohesion-value" for="boids-cohesion">0.005</output><input id="boids-cohesion" type="range" min="0" max="0.03" step="0.001" value="0.005"><span>Move toward the nearby group.</span></label>
+          <label class="range-field">Flock size <output id="boids-count-value" for="boids-count">120</output><input id="boids-count" type="range" min="20" max="300" step="10" value="120"><span>Changing the count resets the flock.</span></label>
+          <label class="seed-field">Seed<input id="boids-seed" value="7" maxlength="40" autocomplete="off"></label>
+          <label class="toggle-field"><span>Add a predator</span><input id="boids-predator" type="checkbox" role="switch"></label>
+          <p class="settings-note">Order measures shared heading: near 0 is mixed, 1 is fully aligned. The simulation advances in fixed 0.04-second steps.</p>
+        </div>
+      </div>
+      <p id="boids-status" class="experiment-status" role="status" aria-live="polite">Paused. Press Play to start the flock.</p>
+    </section>
+
+    <section id="panel-connect-four" class="experiment-panel" role="tabpanel" aria-labelledby="tab-connect-four" tabindex="0" hidden>
+      <div class="experiment-intro">
+        <div><h2>Your move.</h2><p>Four pieces in a line. An opponent that searches ahead.<br>Take on alpha-beta search or Monte Carlo tree search.</p></div>
+        <a class="source-link" href="https://github.com/bushesarebetter/connect-four-ai" target="_blank" rel="noreferrer">Python source</a>
+      </div>
+      <div class="simulation-layout game-layout">
+        <div class="game-visual">
+          <div class="column-choices" aria-label="Choose a column"><button type="button" data-column="0" aria-label="Drop a piece in column 1">1</button><button type="button" data-column="1" aria-label="Drop a piece in column 2">2</button><button type="button" data-column="2" aria-label="Drop a piece in column 3">3</button><button type="button" data-column="3" aria-label="Drop a piece in column 4">4</button><button type="button" data-column="4" aria-label="Drop a piece in column 5">5</button><button type="button" data-column="5" aria-label="Drop a piece in column 6">6</button><button type="button" data-column="6" aria-label="Drop a piece in column 7">7</button></div>
+          <canvas id="connect4-canvas" width="700" height="600" role="img" aria-label="Connect Four board" aria-describedby="board-description"></canvas>
+          <p id="board-description" class="visually-hidden">The board is empty.</p>
+          <p class="keyboard-hint">Click a column, tap the board, or press <kbd>1</kbd>–<kbd>7</kbd>.</p>
+        </div>
+        <div class="simulation-settings game-settings">
+          <h3>Choose your opponent.</h3>
+          <label>Algorithm<select id="game-algorithm"><option value="negamax">Alpha-beta search</option><option value="mcts">Monte Carlo tree search</option></select></label>
+          <label>Difficulty<select id="game-difficulty"><option value="easy">Easy</option><option value="balanced" selected>Balanced</option><option value="hard">Hard</option></select></label>
+          <label>First move<select id="game-first"><option value="human">You go first</option><option value="ai">AI goes first</option></select></label>
+          <div class="player-legend"><span><i id="human-piece"></i>You</span><span><i id="ai-piece"></i>AI</span></div>
+          <p id="game-status" class="game-status" role="status" aria-live="polite">Your turn. Choose a column.</p>
+          <p id="game-search" class="search-reading">Search runs in a background worker.</p>
+          <button id="game-restart" class="button" type="button">New game</button>
+          <button id="game-retry" class="button secondary" type="button" hidden>Retry AI move</button>
+          <p class="settings-note">Alpha-beta searches promising moves first. MCTS estimates moves through simulated games. Search time is bounded; difficulty changes apply to the next AI move.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="shell playground-footer"><p>Everything here runs in your browser.</p><a href="../">Back to the collection</a></footer>
+</body>
+</html>

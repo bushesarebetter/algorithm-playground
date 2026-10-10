@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Algorithms, visual simulations, and small machine learning experiments by bushesarebetter. Explore the projects and try the interactive playground.">
+  <meta name="theme-color" content="#ffffff">
+  <title>Small systems. Big ideas. · bushesarebetter</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preload" href="assets/fonts/Manrope.ttf" as="font" type="font/ttf" crossorigin>
+  <script type="module" src="app.mjs"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to projects</a>
+  <header class="site-header shell">
+    <a class="brand" href="./">bushesarebetter</a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#projects" aria-current="page">Projects</a>
+      <a href="playground/">Playground</a>
+      <a href="#notes">Notes</a>
+      <a href="https://github.com/bushesarebetter">GitHub</a>
+    </nav>
+  </header>
+  <main id="main" class="shell">
+    <section class="introduction" aria-labelledby="page-title">
+      <h1 id="page-title">Small systems. Big ideas.</h1>
+      <p>Algorithms, simulations, and machine learning experiments.</p>
+    </section>
+    <section id="projects" aria-label="Project gallery">
+      <div class="project-filters" role="group" aria-label="Filter projects">
+        <button type="button" data-filter="selected" aria-pressed="true">Selected</button>
+        <button type="button" data-filter="algorithms" aria-pressed="false">Algorithms</button>
+        <button type="button" data-filter="simulations" aria-pressed="false">Simulations</button>
+        <button type="button" data-filter="ml" aria-pressed="false">Machine learning</button>
+      </div>
+      <p id="filter-status" class="sr-only" aria-live="polite"></p>
+      <div class="project-gallery">
+        <div class="gallery-feature-row">
+        <article class="project project-fluid" data-category="simulations">
+          <a class="project-preview fluid-preview" href="https://github.com/bushesarebetter/stable-fluids" aria-label="Explore Stable Fluids source and simulation output">
+            <img src="assets/plates/fluid-preview.png" width="2048" height="768" alt="Illustrated blue and coral fluid flow" fetchpriority="high">
+          </a>
+          <div class="project-caption"><div><h2>Stable Fluids</h2><p>A small fluid simulation.</p></div><a href="https://github.com/bushesarebetter/stable-fluids">View project <svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></a></div>
+        </article>
+        <article class="project project-fourier" data-category="algorithms">
+          <a class="project-preview fourier-preview" href="https://github.com/bushesarebetter/fourier-epicycles" aria-label="Explore Fourier Epicycles">
+            <canvas id="fourier-preview" aria-label="Fourier construction circles drawing a heart">A heart reconstructed with the project's Fourier coefficients.</canvas>
+          </a>
+          <div class="project-caption"><h2>Fourier Epicycles</h2><a href="https://github.com/bushesarebetter/fourier-epicycles">View project <svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></a></div>
+        </article>
+        </div>
+        <div class="gallery-pair-row">
+        <article class="project project-maze" data-category="algorithms">
+          <a class="project-preview maze-preview" href="playground/#maze" aria-label="Try the Maze Search playground"><canvas id="maze-preview" aria-label="A generated maze with its shortest path">Compare BFS, Dijkstra and A* on the same maze.</canvas></a>
+          <div class="project-caption"><h2>Maze Search</h2><a href="playground/#maze">View project <svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></a></div>
+        </article>
+        <article class="project project-connect" data-category="algorithms">
+          <a class="project-preview connect-preview" href="playground/#connect-four" aria-label="Play Connect Four against an AI"><canvas id="connect-preview" aria-label="A Connect Four game position">Play against alpha-beta search or Monte Carlo tree search.</canvas></a>
+          <div class="project-caption"><h2>Connect Four</h2><a href="playground/#connect-four">View project <svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></a></div>
+        </article>
+        </div>
+      </div>
+      <div class="gallery-pair-row gallery-research">
+        <article class="project project-additional" data-category="algorithms"><a class="project-preview ray-preview" href="https://github.com/bushesarebetter/raytracer" aria-label="Explore the NumPy Ray Tracer"><img src="assets/raytracer.png" width="960" height="640" loading="lazy" alt="Spheres, reflections and a checkered floor rendered by the project's NumPy ray tracer"></a><div class="project-caption"><h2>Ray Tracer</h2><a href="https://github.com/bushesarebetter/raytracer">View project <svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></a></div></article>
+        <article class="project project-additional" data-category="ml"><a class="project-preview research-preview" href="https://github.com/bushesarebetter/grokking-progress-measures" aria-label="Explore Grokking Progress Measures"><img src="assets/fourier-embedding.png" width="1200" height="450" loading="lazy" alt="The project's Fourier analysis of learned embeddings in modular arithmetic"></a><div class="project-caption"><h2>Grokking Progress Measures</h2><a href="https://github.com/bushesarebetter/grokking-progress-measures">View project <svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></a></div></article>
+      </div>
+      <p id="gallery-empty" class="empty-message" hidden>No featured projects in this category. <a href="https://github.com/bushesarebetter?tab=repositories">Browse the repositories</a>.</p>
+    </section>
+    <section class="playground-invitation" aria-labelledby="play-title">
+      <div class="invitation-copy"><h2 id="play-title">Get a feel for the rules.</h2><p>Small changes. Surprising behavior. Explore a maze, steer a flock, or make your next move against an AI.</p><a class="button" href="playground/">Open the playground <svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></a><div class="experiment-links"><a href="playground/#maze">Maze search</a><a href="playground/#boids">Boids</a><a href="playground/#connect-four">Connect Four</a></div></div>
+      <div class="flock-stage"><canvas id="flock-preview" aria-label="Live flocking simulation with 150 birds">Flocking emerges from separation, alignment and cohesion.</canvas><div class="flock-caption"><span>150 boids. Three simple rules.</span><button type="button" id="flock-toggle">Pause animation</button></div></div>
+    </section>
+    <section id="notes" class="notes-section" aria-labelledby="notes-title">
+      <div class="section-heading"><h2 id="notes-title">Under the surface.</h2><p>The decisions and details behind the implementations.</p></div>
+      <div class="notes-list">
+        <a class="note" href="https://github.com/bushesarebetter/sat-solver/blob/main/docs/engineering.md"><div><h3>How a SAT solver learns from a conflict.</h3><p>Watched literals, first-UIP learning, and the invariants that keep the search correct.</p></div><span>Read the notes <svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></span></a>
+        <a class="note" href="https://github.com/bushesarebetter/coconut-latent-reasoning/blob/main/docs/engineering.md"><div><h3>What happens between continuous thoughts.</h3><p>Hidden-state feedback, causal caches, and what a small arithmetic experiment can show.</p></div><span>Read the notes <svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></span></a>
+      </div>
+    </section>
+    <section class="benchmark-section" aria-labelledby="benchmark-title">
+      <div class="benchmark-copy"><h2 id="benchmark-title">Measure the variation.</h2><p>One seed never tells the whole story. This Grokfast comparison keeps the data, model, and step budget matched across three seeds and three methods.</p><p class="muted">The observed results vary widely. The report keeps every run, including unreached thresholds, with raw data and execution records.</p><a href="https://github.com/bushesarebetter/paper-benchmarks">Explore the benchmark <svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></a></div>
+      <figure class="benchmark-figure"><img src="assets/paper-comparison.png" width="980" height="630" loading="lazy" alt="Measured final test accuracies for baseline, EMA and moving-average Grokfast methods, showing three individual seeds and wide variation"><figcaption>Three seeds per method · 1,000 training steps · actual measured runs</figcaption></figure>
+    </section>
+    <section class="tools-section" aria-labelledby="tools-title">
+      <div class="section-heading"><h2 id="tools-title">Built to be used.</h2><p>Two practical tools, with a clear path from input to result.</p></div>
+      <div class="tool-row"><div><h3>Security Log Analyzer</h3><p>Find repeated authentication failures, possible password spraying, and success after a failure burst. Every finding points back to the log evidence.</p><a href="https://github.com/bushesarebetter/security-log-analyzer">Explore the source <svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></a></div><div class="log-example"><div class="log-label">Synthetic sample output</div><pre><code>12 authentication events
+ 3 findings
+
+Repeated failures
+Possible password spraying
+Success after repeated failures</code></pre></div></div>
+      <div class="tool-row receipt-tool"><div><h3>ReceiptScanner</h3><p>Review a receipt, correct the details, and move it through an approval queue. Try the complete workflow with fictional sample purchases.</p><a class="button secondary" href="https://bushesarebetter.github.io/ReceiptScanner/demo/">Try the receipt demo <svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></a><a class="subtle-link" href="https://github.com/bushesarebetter/ReceiptScanner">View source</a></div><div class="receipt-summary" aria-label="Fictional receipt example"><div class="receipt-example-title">Paper &amp; Pine</div><p>Office supplies · North building</p><div><span>Grid notebooks × 2</span><span>$17.00</span></div><div><span>Blue ink pens</span><span>$6.95</span></div><div><span>Recycled paper</span><span>$15.00</span></div><div class="receipt-example-total"><strong>Total with tax</strong><strong>$42.07</strong></div><p class="sample-caption">Fictional sample from the working demo</p></div></div>
+    </section>
+    <section class="collection-section" aria-labelledby="collection-title">
+      <div class="section-heading"><h2 id="collection-title">Keep exploring.</h2><p>Twenty classic projects. Six paper implementations. Each with its source, setup, and explanation.</p></div>
+      <div id="project-collection" class="project-collection"></div>
+      <noscript><p><a href="https://github.com/bushesarebetter?tab=repositories">Browse the full project collection on GitHub.</a></p></noscript>
+    </section>
+    <p class="art-credit">Fluid cover illustration created for this gallery. <a href="assets/fluid-preview.png">See the numerical simulation preview</a>. Other algorithm previews use project code; the research figure shows measured results.</p>
+  </main>
+  <footer class="site-footer shell"><a class="brand" href="./">bushesarebetter</a><p>Built to understand. Shared to explore.</p><a href="https://github.com/bushesarebetter">GitHub <svg class="arrow" aria-hidden="true"><use href="#arrow"/></svg></a></footer>
+  <svg class="svg-defs" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs><symbol id="arrow" viewBox="0 0 20 20"><path d="M3 10h13m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></symbol></defs></svg>
+</body>
+</html>
