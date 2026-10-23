@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-23T04:14:24.361Z",
+  "title": "Design System: Algorithm playground",
+  "extensions": {
+    "colorMeta": {
+      "blue": {
+        "role": "primary",
+        "displayName": "Action Blue"
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "White Paper"
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Cool Surface"
+      },
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Simulation Field"
+      },
+      "explored": {
+        "role": "secondary",
+        "displayName": "Explored Cells"
+      },
+      "route": {
+        "role": "secondary",
+        "displayName": "Shortest Route"
+      },
+      "human": {
+        "role": "secondary",
+        "displayName": "Human Player"
+      },
+      "ai": {
+        "role": "secondary",
+        "displayName": "AI Player"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Gallery Display",
+        "purpose": "Compact introduction above the immediately visible work."
+      },
+      "playground-display": {
+        "displayName": "Playground Display",
+        "purpose": "Experiment page title."
+      },
+      "annotation": {
+        "displayName": "Final Annotation",
+        "purpose": "Final explicit overrides for art credit, benchmark/flock caption and boids Order/time."
+      }
+    },
+    "shadows": [
+      {
+        "name": "project-card",
+        "value": "0 1px 3px #0000000c,0 0 0 1px #e9eaed80",
+        "purpose": "Restrained gallery card edge and lift."
+      }
+    ],
+    "motion": [
+      {
+        "name": "image-hover",
+        "value": ".65s cubic-bezier(.16,1,.3,1)",
+        "purpose": "Scale image to 1.025 on hover; removed with reduced motion."
+      },
+      {
+        "name": "column-choice",
+        "value": ".15s",
+        "purpose": "Game choice background/color transition; removed with reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "fidelity-min",
+        "value": "1280px"
+      },
+      {
+        "name": "fidelity-max",
+        "value": "1599px"
+      },
+      {
+        "name": "wide-min",
+        "value": "1600px"
+      },
+      {
+        "name": "gallery-compact-max",
+        "value": "1100px"
+      },
+      {
+        "name": "playground-compact-max",
+        "value": "1050px"
+      },
+      {
+        "name": "supporting-compact-max",
+        "value": "1000px"
+      },
+      {
+        "name": "playground-stack-max",
+        "value": "760px"
+      },
+      {
+        "name": "gallery-stack-max",
+        "value": "700px"
+      },
+      {
+        "name": "game-single-max",
+        "value": "420px"
+      },
+      {
+        "name": "narrow-max",
+        "value": "380px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main experiment or invitation action.",
+      "html": "<button class=\"ds-primary\" type=\"button\">Generate maze</button>",
+      "css": ".ds-primary{font-family:Manrope,sans-serif;display:inline-flex;justify-content:center;align-items:center;gap:9px;border:1px solid #0066cc;padding:11px 20px;border-radius:24px;line-height:1.4;min-height:44px;font-size:15px;font-weight:550;cursor:pointer;background:#0066cc;color:#fff}.ds-primary:hover{background:#005bb7}.ds-primary:disabled{cursor:not-allowed;opacity:.5}.ds-primary:focus-visible{outline:3px solid #0066cc;outline-offset:5px;border-radius:3px}"
+    },
+    {
+      "name": "Secondary button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Reset, single-step or secondary action.",
+      "html": "<button class=\"ds-secondary\" type=\"button\">Reset playback</button>",
+      "css": ".ds-secondary{font-family:Manrope,sans-serif;display:inline-flex;justify-content:center;align-items:center;gap:9px;border:1px solid #0066cc;padding:11px 20px;border-radius:24px;line-height:1.4;min-height:44px;font-size:15px;font-weight:550;cursor:pointer;background:#fff;color:#0066cc;border-color:#d3d9e0}.ds-secondary:hover{background:#f1f7ff}.ds-secondary:disabled{cursor:not-allowed;opacity:.5}.ds-secondary:focus-visible{outline:3px solid #0066cc;outline-offset:5px;border-radius:3px}"
+    },
+    {
+      "name": "Labeled input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Persistent label for a seeded experiment field.",
+      "html": "<label class=\"ds-label\">Seed<input class=\"ds-input\" value=\"7\" autocomplete=\"off\"></label>",
+      "css": ".ds-label{font-family:Manrope,sans-serif;font-size:.82rem;font-weight:600;color:#444b54;display:grid;gap:10px}.ds-input{font-family:Manrope,sans-serif;font-size:.94rem;font-weight:400;color:#1e252c;min-height:44px;max-width:100%;padding:10px 12px;border:1px solid #cbd0d5;border-radius:7px;background:#fff;caret-color:#176eb4}.ds-input:focus-visible{outline:3px solid #0066cc;outline-offset:5px;border-radius:3px}"
+    },
+    {
+      "name": "Site navigation",
+      "kind": "nav",
+      "description": "Quiet navigation with a darker current destination.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Main navigation\"><a href=\"#projects\" aria-current=\"page\">Projects</a><a href=\"#playground\">Playground</a><a href=\"#notes\">Notes</a><a href=\"https://github.com/bushesarebetter\">GitHub</a></nav>",
+      "css": ".ds-nav{font-family:Manrope,sans-serif;display:flex;gap:34px;align-items:center}.ds-nav a{font-size:15px;color:#464954;padding-block:12px;text-decoration:none;text-underline-offset:4px}.ds-nav a:hover,.ds-nav a[aria-current=page]{color:#111114}.ds-nav a:hover{text-decoration:underline}.ds-nav a:focus-visible{outline:3px solid #0066cc;outline-offset:5px;border-radius:3px}@media(max-width:700px){.ds-nav{gap:16px}.ds-nav a{font-size:13px}.ds-nav a[href='#notes']{display:none}}"
+    },
+    {
+      "name": "Gallery filter",
+      "kind": "chip",
+      "refersTo": "filter-selected",
+      "description": "Pressed category filter with action-blue underline.",
+      "html": "<button class=\"ds-filter\" type=\"button\" aria-pressed=\"true\">Selected</button>",
+      "css": ".ds-filter{font-family:Manrope,sans-serif;border:0;background:none;border-bottom:2px solid transparent;padding:6px 8px;color:#626674;font-size:14px;font-weight:500;line-height:1.5;cursor:pointer}.ds-filter[aria-pressed=true]{color:#0066cc;border-color:#0066cc}.ds-filter:focus-visible{outline:3px solid #0066cc;outline-offset:5px;border-radius:3px}"
+    },
+    {
+      "name": "Experiment tabs",
+      "kind": "nav",
+      "refersTo": "experiment-tab-selected",
+      "description": "Experiment selection with dark current underline.",
+      "html": "<nav class=\"ds-tabs\" aria-label=\"Choose an experiment\"><button class=\"ds-tab\" aria-current=\"page\" type=\"button\">Maze</button><button class=\"ds-tab\" type=\"button\">Boids</button><button class=\"ds-tab\" type=\"button\">Connect Four</button></nav>",
+      "css": ".ds-tabs{display:flex;gap:36px;border-bottom:1px solid #d9dce0}.ds-tab{font-family:Manrope,sans-serif;font-size:1rem;font-weight:600;color:#6a6f77;padding:16px 0 19px;background:none;border:0;border-bottom:2px solid transparent;cursor:pointer;min-height:48px}.ds-tab[aria-current=page]{border-color:#16191d;color:#16191d}.ds-tab:hover{color:#16191d}.ds-tab:focus-visible{outline:3px solid #0066cc;outline-offset:5px;border-radius:3px}"
+    },
+    {
+      "name": "Project caption card",
+      "kind": "card",
+      "refersTo": "project",
+      "description": "Clipped gallery container and quiet title/action caption; imagery is supplied by the actual project.",
+      "html": "<article class=\"ds-card\"><div class=\"ds-caption\"><div><h2>Stable Fluids</h2><p>A small fluid simulation.</p></div><a href=\"https://github.com/bushesarebetter/stable-fluids\">View project <svg width=\"18\" height=\"18\" viewBox=\"0 0 20 20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\" aria-hidden=\"true\"><path d=\"M3 10h13m-5-5 5 5-5 5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a></div></article>",
+      "css": ".ds-card{font-family:Manrope,sans-serif;border-radius:10px;overflow:hidden;box-shadow:0 1px 3px #0000000c,0 0 0 1px #e9eaed80;background:#fff;color:#1d1d1f;min-width:0}.ds-caption{min-height:80px;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 22px}.ds-caption h2{font-size:20px;letter-spacing:-.035em;font-weight:650;line-height:1.12;margin:0}.ds-caption p{font-size:15px;color:#6b6e79;margin:4px 0 0;line-height:1.4}.ds-caption a{font-size:15px;white-space:nowrap;display:inline-flex;align-items:center;gap:8px;color:#0066cc;text-decoration:none;text-underline-offset:4px}.ds-caption a:hover{text-decoration:underline}.ds-caption a:focus-visible{outline:3px solid #0066cc;outline-offset:5px;border-radius:3px}"
+    },
+    {
+      "name": "Range setting",
+      "kind": "input",
+      "description": "Label, tabular value, native range and subordinate explanation.",
+      "html": "<label class=\"ds-range\">Separation <output>0.080</output><input type=\"range\" min=\"0\" max=\".3\" step=\".005\" value=\".08\"><span>Leave room between close neighbors.</span></label>",
+      "css": ".ds-range{font-family:Manrope,sans-serif;font-size:.82rem;font-weight:600;color:#444b54;display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px;padding-bottom:19px;border-bottom:1px solid #dfe3e6}.ds-range output{font-variant-numeric:tabular-nums;font-size:.82rem;font-weight:500;color:#5e6771}.ds-range input,.ds-range>span{grid-column:1/-1}.ds-range input{accent-color:#202b35;cursor:pointer;width:100%;height:22px;margin:0;min-width:80px}.ds-range>span{font-weight:400;font-size:.78rem;line-height:1.5;color:#6a727a}.ds-range input:focus-visible{outline:3px solid #0066cc;outline-offset:5px;border-radius:3px}"
+    },
+    {
+      "name": "Game column choice",
+      "kind": "button",
+      "description": "Visible keyboard/touch alternative to placing a piece on the canvas.",
+      "html": "<button class=\"ds-column\" type=\"button\" aria-label=\"Drop a piece in column 1\">1</button>",
+      "css": ".ds-column{font-family:Manrope,sans-serif;min-height:44px;width:100%;border:1px solid #d0d6dc;border-radius:7px;background:#fff;color:#364453;cursor:pointer;font-size:.86rem;transition:background .15s,color .15s}.ds-column:not(:disabled):hover{color:#fff;background:#283a4c;border-color:#283a4c}.ds-column:disabled{opacity:.35;cursor:default}.ds-column:focus-visible{outline:3px solid #0066cc;outline-offset:5px;border-radius:3px}@media(prefers-reduced-motion:reduce){.ds-column{transition:none}}"
+    },
+    {
+      "name": "Engineering note row",
+      "kind": "custom",
+      "description": "Full-width divided text entry with a direct source action.",
+      "html": "<a class=\"ds-note\" href=\"https://github.com/bushesarebetter/sat-solver/blob/main/docs/engineering.md\"><div><h3>How a SAT solver learns from a conflict.</h3><p>Watched literals, first-UIP learning, and the invariants that keep the search correct.</p></div><span>Read the notes</span></a>",
+      "css": ".ds-note{font-family:Manrope,sans-serif;display:flex;justify-content:space-between;align-items:center;gap:36px;padding:28px 0;border-bottom:1px solid #e7e8eb;color:#1d1d1f;text-decoration:none}.ds-note h3{font-size:23px;line-height:1.12;letter-spacing:-.025em;font-weight:600;margin:0}.ds-note p{font-size:16px;line-height:1.55;color:#626674;max-width:70ch;margin:10px 0 0}.ds-note>span{color:#0066cc;font-size:15px;white-space:nowrap}.ds-note:hover h3{color:#0066cc}.ds-note:focus-visible{outline:3px solid #0066cc;outline-offset:5px;border-radius:3px}@media(max-width:700px){.ds-note{align-items:flex-start;flex-direction:column;gap:16px;padding-block:25px}.ds-note h3{font-size:22px}.ds-note p{font-size:15px}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "A gallery of visible mechanisms",
+    "overview": "The approved Apple-inspired world uses white and cool light-gray fields, precise grotesk typography, measured whitespace and blue actions. Subject color belongs to the algorithms and their imagery. The build translates the approved modern collection into substantial, unequal exhibits with quiet captions, followed by working experiments, engineering notes, measured research and a source-linked collection.\n\nThe gallery makes the work visible immediately. The playground keeps the same neutral chrome while dark canvas fields give simulations and game state their own space. The fluid cover is credited illustration; algorithm drawings use project state and research figures retain their measured provenance. No borrowed Apple identity, products, affiliation or marketing claims belong to this system.",
+    "keyCharacteristics": [
+      "Substantial project imagery with restrained navigation and captions.",
+      "White page fields, cool secondary surfaces and clear blue actions.",
+      "Working mechanisms and readable controls carry the visual interest."
+    ],
+    "rules": [
+      {
+        "name": "The Subject Color Rule",
+        "body": "Keep interface chrome neutral with blue actions; let algorithm state and source-grounded imagery provide subject color.",
+        "section": "colors"
+      },
+      {
+        "name": "The Mechanism Motion Rule",
+        "body": "Preserve purposeful animation and explicit playback controls; respect reduced motion instead of adding ambient page motion.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** show substantial project previews immediately after the compact introduction and filters.",
+      "**Do** preserve real algorithm state, measured-result provenance and visible synthetic-sample labels.",
+      "**Do** retain readable mobile controls, keyboard focus, status feedback and playback controls.",
+      "**Do** use the current final annotation overrides and keep new body prose at 14px or above."
+    ],
+    "donts": [
+      "**Don't** replace source-grounded algorithm state with invented benchmark or performance claims.",
+      "**Don't** turn dark simulation fields into a dark page theme.",
+      "**Don't** add decorative eyebrows or heavy shadows to the restrained gallery.",
+      "**Don't** reproduce Apple logos, products, affiliation claims or marketing copy."
+    ]
+  }
+}
